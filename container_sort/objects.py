@@ -36,9 +36,9 @@ class StackOfContainers:
     def __add__(self, other):
         if isinstance(other, StackOfContainers):
             conjoined = StackOfContainers()
-            for node in reversed(self):
+            for node in self:
                 conjoined.put(node.value)
-            for node in reversed(other):
+            for node in other:
                 conjoined.put(node.value)
                 if StackOfContainers.noisy_mode:
                     with open(file_path, "a") as file:
@@ -48,7 +48,7 @@ class StackOfContainers:
 
     def __iadd__(self, other):
         if isinstance(other, StackOfContainers):
-            for node in reversed(other):
+            for node in other:
                 self.put(node.value)
                 if StackOfContainers.noisy_mode:
                     with open(file_path, "a") as file:
